@@ -1,0 +1,127 @@
+
+<mat-toolbar color= "primary">
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon routerLink="/map"> edit_location</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" >
+    <mat-icon  >share</mat-icon>
+  </button>
+  <mat-menu >
+    <button  routerLink="map"  mat-menu-item>Google Map</button>
+
+  </mat-menu>
+  <div class="spacer"></div>
+  <a mat-button [matMenuTriggerFor]="Persons">Persons</a>
+</mat-toolbar>
+
+<mat-menu #Persons=matMenu>
+  <button  routerLink="/persons"  mat-menu-item>List Persons</button>
+  <button  routerLink="/addPerson"  mat-menu-item>Add a person</button>
+  <button  routerLink="/"  mat-menu-item>Vew my profile</button>
+</mat-menu>
+
+
+
+
+<div class="col-sm-11 mt-3 ml-5">
+  <div class="card" *ngIf="mode==1">
+    <div class="card-header bg-dark">
+      <h3 class="card-title text-white">Update Person</h3>
+    </div>
+
+
+    <form class="form-horizontal" (ngSubmit)="update(f.value)" #f="ngForm" enctype="multipart/form-data">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="firstName" class="control-label col-sm-auto">firstName : </label>
+          <div class="col-sm-auto">
+            <input type="text" id="firstName" class="form-control" placeholder="firstName" name="firstName" [(ngModel)]="person.firstName" required/>
+          </div>
+        </div>
+
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber" class="control-label col-sm-auto">phoneNumber : </label>
+          <div class="col-sm-auto">
+            <input type="text" id="phoneNumber" class="form-control" placeholder="phoneNumber" name="phoneNumber" [(ngModel)]="person.phoneNumber" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="control-label col-sm-auto">age : </label>
+          <div class="col-sm-auto">
+            <input type="number" id="age" class="form-control" placeholder="age" name="age" [(ngModel)]="person.age" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country" class="control-label col-sm-auto">country : </label>
+          <div class="col-sm-auto">
+            <input type="text" id="country" class="form-control" placeholder="country" name="country" [(ngModel)]="person.country" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="jobTitle" class="control-label col-sm-auto">jobTitle : </label>
+          <div class="col-sm-auto">
+            <input type="text" id="jobTitle" class="form-control" placeholder="jobTitle" name="jobTitle" [(ngModel)]="person.jobTitle" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="monthlyIncome" class="control-label col-sm-auto">monthlyIncome : </label>
+          <div class="col-sm-auto">
+            <input type="number" id="monthlyIncome" class="form-control" placeholder="monthlyIncome" name="monthlyIncome" [(ngModel)]="person.monthlyIncome" required/>
+          </div>
+        </div>
+
+        <div>
+        </div>
+
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <button type="submit" class="btn btn-dark" [disabled]="!f.valid">Save</button>
+      </div>
+      <!-- /.card-footer -->
+    </form>
+
+
+
+  </div>
+  <div class="col-sm-11 mt-2 ml-5">
+    <div class="card card-info" *ngIf="mode==2">
+      <div class="card-header">
+        <h3 class="card-title">Modifier Article</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-body table-responsive p-0" style="float: right">
+          <table class="table table-hover">
+            <tr class="border-top-0">
+              <td class="size24 font-weight-bold">Name: </td>
+              <td class="size24">{{person.firstName}} </td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">phoneNumber: </td>
+              <td class="size24">{{person.phoneNumber}}</td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">age :</td>
+              <td class="size24">{{person.age}}</td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">country :</td>
+              <td class="size24">{{person.country}}</td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">jobTitle :</td>
+              <td class="size24">{{person.jobTitle}}</td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">monthlyIncome :</td>
+              <td class="size24">{{person.monthlyIncome}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
